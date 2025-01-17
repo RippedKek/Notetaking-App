@@ -30,7 +30,7 @@ const Login = () => {
 
       <div className="flex items-center justify-center mt-28">
         <div className="w-96 border rounded bg-white px-7 py-10">
-          <form onSubmit={(e) => e.preventDefault()}>
+          <form onSubmit={handleLogin}>
             <h4 className="text-2xl mb-7 ">Login</h4>
             <input
               type="text"
@@ -44,7 +44,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
             {error && <p className="text-red-500 text-xs pb-1">{error}</p>}
-            <button type="submit" className="btn-primary" onClick={handleLogin}>
+            <button type="submit" className="btn-primary">
               Login
             </button>
             <p className="text-sm text-center mt-4">
