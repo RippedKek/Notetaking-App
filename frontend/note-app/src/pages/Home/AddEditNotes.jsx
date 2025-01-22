@@ -9,6 +9,10 @@ const AddEditNotes = ({ noteData, type, onClose }) => {
 
   const [error, setError] = useState(null);
 
+  const addNewNote = async () => {};
+
+  const editNote = async () => {};
+
   const handleAddNote = () => {
     if (!title) {
       setError("Title is required");
