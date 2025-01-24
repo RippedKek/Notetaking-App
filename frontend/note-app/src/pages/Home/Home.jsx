@@ -18,6 +18,14 @@ const Home = () => {
   const [allNotes, setAllNotes] = useState([]);
   const navigate = useNavigate();
 
+  const handleEdit = (noteDetails) => {
+    setOpenAddEditModal({
+      isShown: true,
+      data: noteDetails,
+      type: "edit",
+    });
+  };
+
   // Get User info
   const getUserInfo = async () => {
     try {
@@ -55,7 +63,7 @@ const Home = () => {
 
       <div className="container mx-auto px-5">
         <div className="grid grid-cols-3 gap-4 mt-8">
-          {allNotes.map((item, index) => {
+          {allNotes.map((item, index) => (
             <NoteCard
               key={item._id}
               title={item.title}
@@ -63,11 +71,11 @@ const Home = () => {
               content={item.content}
               tags={item.tags}
               isPinned={item.isPinned}
-              onEdit={() => console.log("Edit")}
+              onEdit={() => handleEdit(item)}
               onDelete={() => console.log("Delete")}
               onPinNote={() => console.log("Pin")}
-            />;
-          })}
+            />
+          ))}
         </div>
       </div>
       <button
@@ -92,6 +100,7 @@ const Home = () => {
         <AddEditNotes
           type={openAddEditModal.type}
           noteData={openAddEditModal.data}
+          getAllNotes={getAllNotes}
           onClose={() => {
             setOpenAddEditModal({ isShown: false, type: "add", data: null });
           }}
